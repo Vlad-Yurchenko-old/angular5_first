@@ -6,7 +6,13 @@ import {catchError, tap} from 'rxjs/operators';
 import {User} from './user';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({
+    //'Content-Type': 'application/json',
+    //'Accept': 'application/json',
+    //'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE, PUT',
+    //'Access-Control-Allow-Origin': '*',
+    //'Access-Control-Allow-Headers': 'X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding'
+  })
 };
 
 
@@ -20,32 +26,20 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  getUsers(): Observable<object[]> {
-    console.log("(UserService) Getting users list");
-    return this.http.get<object[]>(this.usersUrl)
-      .pipe(
-        tap(heroes => this.log(`fetched heroes`)),
-        catchError(this.handleError('getHeroes', []))
-      );
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>('http://localhost:8080/api/users', httpOptions);
   }
 
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
+  updateUser(user: User): void {
+    this.http.put('http://localhost:8080/api/users', user, httpOptions).subscribe(value => {}, error1 => console.log(error1));
+  }
+
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
+      console.error(error);
       this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }

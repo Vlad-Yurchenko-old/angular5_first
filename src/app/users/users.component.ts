@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../user';
 
+import {UserDetailsComponent} from '../user-details/user-details.component';
+
+import {User} from '../user';
 import {UserService} from '../user.service';
 
 @Component({
@@ -13,15 +15,21 @@ export class UsersComponent implements OnInit {
   user_title = 'Users List';
 
   users: User[];
+  currentUser: User;
+
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    console.log("(UsersComponent) Getting users list");
-    this.userService.getUsers().subscribe(value => console.log(value));
-    console.log("Users list :");
-    console.log(this.users);
+    this.userService.getUsers().subscribe(value => {
+      console.log(value);
+      this.users = value['result'];
+    });
+  }
+
+  rowClick(user: User) {
+    this.currentUser = user;
   }
 
 }
