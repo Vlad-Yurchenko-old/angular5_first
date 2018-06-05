@@ -1,0 +1,46 @@
+
+<nav *ngIf="artusers" class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{title}}</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul *ngIf="artusers" class="nav navbar-nav navbar-right">
+        <li *ngFor="let city of cities">
+          <a (click)="chooseCity(city)">{{city}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div *ngIf="currentCity" class="container table-block">
+  <table class="table table-inverse table-hover">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Languages</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of currentCityUsers">
+      <td>{{user.name}}</td>
+      <td>
+        <div *ngIf="user.languages.ru">
+          ru
+        </div>
+        <div *ngIf="user.languages.en">
+          en
+        </div>
+      </td>
+      <td>{{user.languages}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

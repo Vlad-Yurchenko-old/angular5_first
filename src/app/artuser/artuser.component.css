@@ -1,0 +1,42 @@
+
+.navbar-header .navbar-brand {
+  font-size: 25px;
+  color: #fff;
+}
+
+.navbar{
+  background: black;
+  width:100%;
+  z-index:10;
+  max-width:100%;
+}
+
+.navbar-brand {
+  background-color: transparent;
+}
+
+.navbar .container-fluid .nav .active a{
+  font-stretch:ultra-expanded;
+  font-weight: 700;
+  font-size: 15px;
+  color: #922a8c;
+  background: transparent;
+}
+
+.navbar .container-fluid .nav .active a:hover{
+  color: #922a8c;
+}
+
+.navbar .container-fluid .nav a{
+  color: #fff;
+  background: transparent;
+}
+
+.navbar .container-fluid .nav a:hover{
+  color: #dd88d8;
+}
+
+
+.table-block {
+  margin: 0 auto;
+}
