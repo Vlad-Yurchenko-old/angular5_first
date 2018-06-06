@@ -1,0 +1,11 @@
+<div *ngIf="userCV">
+
+  <div class="cv-block">
+    <h2>{{userCV.cv.name.firstname}} {{userCV.cv.name.lastname}}</h2>
+
+    <h4>{{userCV.cv.position.title}}</h4>
+    <h5>{{userCV.cv.location.code}}</h5>
+    <button (click)="goBack()">go back</button>
+  </div>
+
+</div>

@@ -7,16 +7,10 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppRoutingModule }     from './app-routing.module';
 
-import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './dashboard/dashboard.component';
-import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
-import { HeroesComponent }      from './heroes/heroes.component';
-import { HeroSearchComponent }  from './hero-search/hero-search.component';
-import { MessagesComponent }    from './messages/messages.component';
-import { UsersComponent } from './users/users.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { ArtuserComponent } from './artuser/artuser.component';
-import { LoginComponent } from './login/login.component';
+import { AppComponent }         from './components/app/app.component';
+import { ArtuserComponent } from './components/artuser/artuser.component';
+import { LoginComponent } from './components/login/login.component';
+import { CvComponent } from './components/cv/cv.component';
 
 @NgModule({
   imports: [
@@ -32,15 +26,9 @@ import { LoginComponent } from './login/login.component';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
-    HeroesComponent,
-    HeroDetailComponent,
-    MessagesComponent,
-    HeroSearchComponent,
-    UsersComponent,
-    UserDetailsComponent,
     ArtuserComponent,
-    LoginComponent
+    LoginComponent,
+    CvComponent
   ],
   bootstrap: [ AppComponent ]
 })
