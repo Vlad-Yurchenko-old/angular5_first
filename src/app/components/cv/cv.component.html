@@ -1,11 +1,185 @@
+<!--<div *ngIf="userCV">-->
+
+<!--<div class="cv-block">-->
+<!--<h2>{{userCV.cv.name.firstname}} {{userCV.cv.name.lastname}}</h2>-->
+
+<!--<h4>{{userCV.cv.position.title}}</h4>-->
+<!--<h5>{{userCV.cv.location.code}}</h5>-->
+<!--<button (click)="goBack()">go back</button>-->
+<!--</div>-->
+
+<!--</div>-->
+
 <div *ngIf="userCV">
+  <div class="card card_color_transparent card_padding_m ">
+    <div class="user-info">
+      <div class="user-info__job">
+        <div class="name user-info__name name_size_m">{{userCV.cv.name.firstname}} {{userCV.cv.name.lastname}}</div>
+        <div class="position">{{userCV.cv.position.title}}</div>
+      </div>
+      <div class="user-info__actions">
+        <a href="#" class="button button_theme_primary user-info__button">RU</a>
+        <a href="#" class="button button_theme_primary user-info__button">Экспорт</a>
+        <a href="#" class="button button_theme_primary user-info__button">На почту</a>
+        <a href="edit.html"
+           class="button button_theme_primary user-info__button user-info__button_last">Редактировать</a>
+      </div>
+    </div>
+    <div class="short-info">
+      <span class="short-info__label">Офис</span>
+      <span class="short-info__text">{{userCV.cv.location.code}}</span>
+    </div>
+    <div class="info  info_margin_m">
+      <span class="info__title info__title_theme_primary ">Компетенции</span>
+      <div class="card info__card card_padding_m">
+        <div class="card__item">
+          <div class="auto-complete">
+            <span class="card__item-label" contenteditable="true">Языки программирования</span>
+            <div class='auto-complete__tip auto-complete__tip_subtitle'>
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
+            </div>
+          </div>
+          <div class="card__pills">
+            <div class="auto-complete auto-complete__pill ">
+              <input class="pill card__pill auto-complete__pill" value="JavaScript">
+              <div class='auto-complete__tip auto-complete__tip_pill'>
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card__item">
+          <span class="card__item-label">Библиотеки</span>
+          <div class="card__pills">
+            <span class="pill card__pill">JQuery</span>
+            <span class="pill card__pill">Lodash</span>
+            <span class="pill card__pill">RXJS</span>
+          </div>
+        </div>
+        <div class="card__item">
+          <span class="card__item-label">Фреймворки</span>
+          <div class="card__pills">
+            <span class="pill card__pill">Angular</span>
+            <span class="pill card__pill">AngularJS</span>
+            <span class="pill card__pill">Express</span>
+            <span class="pill card__pill">VueJS</span>
+            <span class="pill card__pill">Ionic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info info_margin_m">
+      <span class="info__title info__title_theme_primary">Проекты</span>
+      <div *ngFor="let project of userCV.cv.projects" class="card info__card card_padding_m">
+        <div class="card__item">
+          <span class="card__item-project">{{project.project.description.name}}</span>
+          <span class="card__item-date">{{getMonthByNumber(project.startDate.month)}} {{project.startDate.year}} – {{getMonthByNumber(project.endDate.month)}} {{project.endDate.year}}</span>
+        </div>
 
-  <div class="cv-block">
-    <h2>{{userCV.cv.name.firstname}} {{userCV.cv.name.lastname}}</h2>
+        <div *ngIf="project.project.description.company != null">
+          <div class="card__item">
+            <span class="card__item-label">Компания</span>
+            <div class="card__item-text">
+              {{project.project.description.company.title}}
+            </div>
+          </div>
+        </div>
 
-    <h4>{{userCV.cv.position.title}}</h4>
-    <h5>{{userCV.cv.location.code}}</h5>
-    <button (click)="goBack()">go back</button>
+        <div class="card__item">
+          <span class="card__item-label">Описание проекта</span>
+          <div class="card__item-text">
+            {{project.project.description.description}}
+          </div>
+        </div>
+
+        <div *ngIf="project.position != null">
+          <div class="card__item">
+            <span class="card__item-label">Позиция</span>
+            <div class="card__item-text">
+              {{project.position.title}}
+            </div>
+          </div>
+        </div>
+
+        <div class="card__item">
+          <span class="card__item-label">Исполняемые обязанности</span>
+          <div class="card__item-text">
+            {{project.responsibilities}}
+          </div>
+        </div>
+
+        <div *ngIf="project.tags != null">
+          <div class="card__item">
+            <span class="card__item-label">Технологии</span>
+            <div class="card__pills">
+              <span class="pill card__pill" *ngFor="let tag of project.tags">{{tag.title}}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="info info_margin_m">
+      <span class="info__title info__title_theme_primary">Краткая информация и образование</span>
+      <div class="card info__card  card_padding_m">
+        <div class="card__item">
+          <span class="card__item-label">Краткая информация</span>
+          <div class="card__item-text">
+            Один мучительный и незабываемый год разработки в банковских системах
+          </div>
+        </div>
+        <div class="card__item">
+          <span class="card__item-label">Основное образование</span>
+          <div class="card__item-text">
+            ВГУ им П.М. Машерова (2012–2017) инженер-программист
+          </div>
+        </div>
+        <div class="card__item">
+          <span class="card__item-label">Сертификаты</span>
+          <div class="card__item-text">
+            EPAM курс по Программированию Web приложений на ASP.NET MVC (май-август 2017)
+          </div>
+        </div>
+        <div class="card__item">
+          <span class="card__item-label">Языки</span>
+          <div class="card__item-text">
+            Русский - родной<br>
+            Английский - starter
+          </div>
+        </div>
+        <div class="card__item">
+          <span class="card__item-label">Дополнительная информация</span>
+          <div class="card__item-text">
+            Водительские права категории В
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
 </div>

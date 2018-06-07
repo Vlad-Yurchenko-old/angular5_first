@@ -17,6 +17,6 @@ export class UserCV {
     this.lastModified = lastModified;
     this.lastModifiedBy = lastModifiedBy;
     this.version = version;
-    this.cv = cv
+    this.cv = cv;
   }
 }

@@ -1,42 +1,42 @@
 
 .navbar-header .navbar-brand {
-  font-size: 25px;
-  color: #fff;
+  font-size: 25px !important;
+  color: #fff !important;;
 }
 
 .navbar{
-  background: black;
-  width:100%;
-  z-index:10;
-  max-width:100%;
+  background: black !important;;
+  width:100% !important;;
+  z-index:10 !important;;
+  max-width:100% !important;;
 }
 
 .navbar-brand {
-  background-color: transparent;
+  background-color: transparent !important;;
 }
 
 .navbar .container-fluid .nav .active a{
-  font-stretch:ultra-expanded;
-  font-weight: 700;
-  font-size: 15px;
-  color: #922a8c;
-  background: transparent;
+  font-stretch:ultra-expanded !important;;
+  font-weight: 700 !important;;
+  font-size: 15px !important;;
+  color: #922a8c !important;;
+  background: transparent !important;;
 }
 
 .navbar .container-fluid .nav .active a:hover{
-  color: #922a8c;
+  color: #922a8c !important;;
 }
 
 .navbar .container-fluid .nav a{
-  color: #fff;
-  background: transparent;
+  color: #fff !important;;
+  background: transparent !important;;
 }
 
 .navbar .container-fluid .nav a:hover{
-  color: #dd88d8;
+  color: #dd88d8 !important;;
 }
 
 
 .table-block {
-  margin: 0 auto;
+  margin: 0 auto !important;;
 }

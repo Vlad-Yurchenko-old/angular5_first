@@ -18,7 +18,7 @@ export class ArtuserService {
   }
 
   getUserCv(owner: string): Observable<UserCV> {
-    return this.http.get<UserCV>(HOST + REST_CV + owner, LoginService.getTokenHeader());
+    return this.http.get<UserCV>(HOST + REST_CV + owner + '?language=en', LoginService.getTokenHeader());
   }
 
 }

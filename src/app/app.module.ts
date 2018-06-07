@@ -1,16 +1,19 @@
-import { NgModule }       from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
-import { HttpClientModule }    from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 
-import { AppRoutingModule }     from './app-routing.module';
+import {AppRoutingModule} from './app-routing.module';
 
-import { AppComponent }         from './components/app/app.component';
-import { ArtuserComponent } from './components/artuser/artuser.component';
-import { LoginComponent } from './components/login/login.component';
-import { CvComponent } from './components/cv/cv.component';
+import {AppComponent} from './components/app/app.component';
+import {ArtuserComponent} from './components/artuser/artuser.component';
+import {LoginComponent} from './components/login/login.component';
+import {CvComponent} from './components/cv/cv.component';
+import { TopbarComponent } from './components/topbar/topbar.component';
+import { LeftMenuComponent } from './components/left-menu/left-menu.component';
+import { VersionsComponent } from './components/versions/versions.component';
 
 @NgModule({
   imports: [
@@ -28,8 +31,12 @@ import { CvComponent } from './components/cv/cv.component';
     AppComponent,
     ArtuserComponent,
     LoginComponent,
-    CvComponent
+    CvComponent,
+    TopbarComponent,
+    LeftMenuComponent,
+    VersionsComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

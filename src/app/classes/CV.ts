@@ -1,5 +1,6 @@
 import {Name} from './Name';
 import {Nsi} from './Nsi';
+import {Project} from './Project';
 
 export class CV {
   location: Location;
@@ -7,7 +8,7 @@ export class CV {
   description: string;
   projectCode: string;
   name: Name;
-  projects: object[];
+  projects: Project[];
   summary: object[];
   additionalInfo: object[];
   expertise: object[];

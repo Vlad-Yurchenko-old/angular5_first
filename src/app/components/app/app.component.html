@@ -1,7 +1,32 @@
+<body>
+<div class="root">
+  <div class="root__cover"></div>
+  <div class="container-fluid">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <app-topbar></app-topbar>
+
+    <div class="row">
+
+      <div class="col-md-5 col-lg-4 col-xl-2 ">
+        <app-left-menu></app-left-menu>
+        <app-versions></app-versions>
+      </div>
+
+      <div class="col-md-7 col-lg-8 col-xl-10">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 <nav>
   <a routerLink="/cv/list">Artezio Users</a>
   <a routerLink="/login">Login</a>
 </nav>
-<router-outlet></router-outlet>
+
+
+</body>
+
+
