@@ -15,7 +15,7 @@
     <div class="user-info">
       <div class="user-info__job">
         <div class="name user-info__name name_size_m">{{userCV.cv.name.firstname}} {{userCV.cv.name.lastname}}</div>
-        <div class="position">{{userCV.cv.position.title}}</div>
+        <div *ngIf="userCV.cv.position != null" class="position">{{userCV.cv.position.title}}</div>
       </div>
       <div class="user-info__actions">
         <a href="#" class="button button_theme_primary user-info__button">RU</a>
@@ -25,75 +25,32 @@
            class="button button_theme_primary user-info__button user-info__button_last">Редактировать</a>
       </div>
     </div>
+
+
     <div class="short-info">
       <span class="short-info__label">Офис</span>
       <span class="short-info__text">{{userCV.cv.location.code}}</span>
     </div>
-    <div class="info  info_margin_m">
+
+
+    <div *ngIf="userCV.cv.expertise.length != 0" class="info  info_margin_m">
       <span class="info__title info__title_theme_primary ">Компетенции</span>
       <div class="card info__card card_padding_m">
-        <div class="card__item">
-          <div class="auto-complete">
-            <span class="card__item-label" contenteditable="true">Языки программирования</span>
-            <div class='auto-complete__tip auto-complete__tip_subtitle'>
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-              <!--<div class="auto-complete__tip-item auto-complete__tip-item_subtitle">123</div>-->
-            </div>
-          </div>
+
+        <div *ngFor="let expertise of userCV.cv.expertise" class="card__item">
+          <span class="card__item-label">{{expertise.area}}</span>
           <div class="card__pills">
-            <div class="auto-complete auto-complete__pill ">
-              <input class="pill card__pill auto-complete__pill" value="JavaScript">
-              <div class='auto-complete__tip auto-complete__tip_pill'>
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-                <!--<div class="auto-complete__tip-item auto-complete__tip-item_pill">123</div>-->
-              </div>
-            </div>
+            <span *ngFor="let tag of expertise.tags; let i = index" class="pill card__pill">
+              {{tag.title}}
+              <span *ngIf="i != expertise.tags.length - 1">,&nbsp;</span>
+            </span>
           </div>
         </div>
-        <div class="card__item">
-          <span class="card__item-label">Библиотеки</span>
-          <div class="card__pills">
-            <span class="pill card__pill">JQuery</span>
-            <span class="pill card__pill">Lodash</span>
-            <span class="pill card__pill">RXJS</span>
-          </div>
-        </div>
-        <div class="card__item">
-          <span class="card__item-label">Фреймворки</span>
-          <div class="card__pills">
-            <span class="pill card__pill">Angular</span>
-            <span class="pill card__pill">AngularJS</span>
-            <span class="pill card__pill">Express</span>
-            <span class="pill card__pill">VueJS</span>
-            <span class="pill card__pill">Ionic</span>
-          </div>
-        </div>
+
       </div>
     </div>
+
+
     <div class="info info_margin_m">
       <span class="info__title info__title_theme_primary">Проекты</span>
       <div *ngFor="let project of userCV.cv.projects" class="card info__card card_padding_m">
@@ -111,10 +68,12 @@
           </div>
         </div>
 
-        <div class="card__item">
-          <span class="card__item-label">Описание проекта</span>
-          <div class="card__item-text">
-            {{project.project.description.description}}
+        <div *ngIf="project.project.description.description != null && project.project.description.description != ''">
+          <div class="card__item">
+            <span class="card__item-label">Описание проекта</span>
+            <div class="card__item-text">
+              {{project.project.description.description}}
+            </div>
           </div>
         </div>
 
@@ -127,18 +86,23 @@
           </div>
         </div>
 
-        <div class="card__item">
-          <span class="card__item-label">Исполняемые обязанности</span>
-          <div class="card__item-text">
-            {{project.responsibilities}}
+        <div *ngIf="project.responsibilities != null && project.responsibilities != ''">
+          <div class="card__item">
+            <span class="card__item-label">Исполняемые обязанности</span>
+            <div class="card__item-text">
+              {{project.responsibilities}}
+            </div>
           </div>
         </div>
 
-        <div *ngIf="project.tags != null">
+        <div *ngIf="project.tags != null && project.tags.length != 0">
           <div class="card__item">
             <span class="card__item-label">Технологии</span>
             <div class="card__pills">
-              <span class="pill card__pill" *ngFor="let tag of project.tags">{{tag.title}}</span>
+              <span class="pill card__pill" *ngFor="let tag of project.tags; let i = index">
+                <span>{{tag.title}}</span>
+                <span *ngIf="i != project.tags.length - 1">,&nbsp;</span>
+              </span>
             </div>
           </div>
         </div>
@@ -148,37 +112,47 @@
     <div class="info info_margin_m">
       <span class="info__title info__title_theme_primary">Краткая информация и образование</span>
       <div class="card info__card  card_padding_m">
-        <div class="card__item">
+
+
+        <div *ngIf="userCV.cv.summary.length != 0" class="card__item">
           <span class="card__item-label">Краткая информация</span>
-          <div class="card__item-text">
-            Один мучительный и незабываемый год разработки в банковских системах
+          <div *ngFor="let summary of userCV.cv.summary" class="card__item-text">
+            {{summary.summary}}
           </div>
         </div>
-        <div class="card__item">
+
+
+        <div *ngIf="userCV.cv.education.length != 0" class="card__item">
           <span class="card__item-label">Основное образование</span>
-          <div class="card__item-text">
-            ВГУ им П.М. Машерова (2012–2017) инженер-программист
+          <div *ngFor="let education of userCV.cv.education" class="card__item-text">
+            {{education.institution}}&nbsp;({{education.startYear}} - {{education.endYear}})
           </div>
         </div>
-        <div class="card__item">
+
+
+        <div *ngIf="userCV.cv.certificates.length != 0" class="card__item">
           <span class="card__item-label">Сертификаты</span>
-          <div class="card__item-text">
-            EPAM курс по Программированию Web приложений на ASP.NET MVC (май-август 2017)
+          <div *ngFor="let certificate of userCV.cv.certificates" class="card__item-text">
+            {{certificate.description}}&nbsp;({{certificate.year}})
           </div>
         </div>
-        <div class="card__item">
+
+
+        <div *ngIf="userCV.cv.languages.length != 0" class="card__item">
           <span class="card__item-label">Языки</span>
           <div class="card__item-text">
-            Русский - родной<br>
-            Английский - starter
+            <div *ngFor="let language of userCV.cv.languages">{{language.language}} - {{language.proficiency}}</div>
           </div>
         </div>
-        <div class="card__item">
+
+
+        <div *ngIf="userCV.cv.additionalInfo.length != 0" class="card__item">
           <span class="card__item-label">Дополнительная информация</span>
-          <div class="card__item-text">
-            Водительские права категории В
+          <div *ngFor="let info of userCV.cv.additionalInfo" class="card__item-text">
+            {{info.additionalInfo}}
           </div>
         </div>
+
       </div>
     </div>
   </div>

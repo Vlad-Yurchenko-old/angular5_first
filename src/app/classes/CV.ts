@@ -1,6 +1,12 @@
 import {Name} from './Name';
 import {Nsi} from './Nsi';
 import {Project} from './Project';
+import {Summary} from './Summary';
+import {AdditionalInfo} from './AdditionalInfo';
+import {Expertise} from './Expertise';
+import {Certificate} from './Certificate';
+import {Education} from './Education';
+import {Language} from './Language';
 
 export class CV {
   location: Location;
@@ -9,12 +15,12 @@ export class CV {
   projectCode: string;
   name: Name;
   projects: Project[];
-  summary: object[];
-  additionalInfo: object[];
-  expertise: object[];
-  certificates: object[];
-  education: object[];
-  languages: object[];
+  summary: Summary[];
+  additionalInfo: AdditionalInfo[];
+  expertise: Expertise[];
+  certificates: Certificate[];
+  education: Education[];
+  languages: Language[];
 
   constructor(location, position, description, projectCode, name, projects, summary, additionalInfo, expertise, certificates, education, languages) {
     this.location = location;
